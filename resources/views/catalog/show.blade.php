@@ -13,6 +13,7 @@
             <p><strong>Resumen: </strong>{{$pelicula->synopsis}}</p>
             <spam><strong>Estado: </strong></spam>
             @if($pelicula->rented)
+            <spam>Pelicula actualmente alquilada</spam><p></p>
             <form action="{{action([App\Http\Controllers\CatalogController::class, 'putReturn'], ['id' => $pelicula->id])}}" 
                 method="POST" style="display:inline">
                 @method('PUT')
@@ -22,6 +23,7 @@
                 </button>
             </form>
             @else
+            <spam>Pelicula disponible</spam><p></p>
             <form action="{{action([App\Http\Controllers\CatalogController::class, 'putRent'], ['id' => $pelicula->id])}}" 
                 method="POST" style="display:inline">
                 @method('PUT')
